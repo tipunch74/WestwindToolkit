@@ -1,15 +1,30 @@
 ﻿# West Wind Toolkit Change Log
 
-### 2.70
+### 3.0.0
 *not released yet*
 
-* **Fix binary encoding for extended characters in Encryption class**  
-<small>westwind.utilties</small>
-Binary encoding now uses UTF encoding to encrypt/decrypt strings in order to support extended characters.
+* **Move Westwind.Utilities to separate Repository and add .NET Standard Support**  
+Remove `westwind.utilities` project to a new Git Repository that is more focused. The new separated westwind.utilities package has also switched to a new SDK style project and supports .NET 4.0, .NET 4.5 and .NET Standard 2.0 targets. For this project westwind.utilities is now imported as a package reference instead of a project reference.
 
-* **Encryption adds support for returning binary string data as BinHex**  
-<small>westwind.utilties</small>
-You can now return binary values in BinHex format in addition to the default base64 encoded string values.
+### 2.80
+
+* **WebUtils.SanitizeHtml()**  
+Added a rudimentary RegEx based HTML sanitation routine to remove script execution from HTML. Removes various tags (script, iframe, form, etc.), `javascript:` tags and JavaScript event handlers. This is meant as a rudimentary sanitizer. For complete sanitation it's recommended you use a dedicated tool which can configure more protection options.
+
+
+### 2.72
+*May 18th, 2017*
+
+* **StringUtils.TokenizeString() and DetokenizeString()**  
+<small>westwind.utilties</small>  
+Added a function that looks for a string pattern based on start and end characters, and replaces the text with numbered tokens. DetokenizeString() then can reinsert the tokens back into the string. Useful for parsing out parts of string for manipulation and then re-adding the values edited out.
+
+* **StringUtils.GetLines() optional maxLines Parameter**  
+<small>westwind.utilties</small>  
+Added an optional parameter to `GetLines()` to allow specifying the number of lines returned. Internally still all strings are parsed first, but the result retrieves only the max number of lines.
+
+* **StringUtils.GenerateUniqueId() additional characters**
+You can now add additional character to be included in the unique ID in addition to numbers and digits. This makes the string more resilient to avoid dupe values.
 
 * **Add support for HMAC hashing in Encryption.ComputeHash()**
 <small>westwind.utilties</small>
@@ -18,6 +33,18 @@ HMAC provides a standardized way to introduces salted values into hashes that re
 * **Add Encryption.EncryptBytes() and Encryption.DecryptBytes()**  
 <small>westwind.utilties</small>
 Added additional overloads that allow passing byte buffer for the encryption key to make it easier to work with OS data API.
+
+
+### 2.70
+*December 15th, 2016*
+
+* **Fix binary encoding for extended characters in Encryption class**  
+<small>westwind.utilties</small>
+Binary encoding now uses UTF encoding to encrypt/decrypt strings in order to support extended characters.
+
+* **Encryption adds support for returning binary string data as BinHex**  
+<small>westwind.utilties</small>
+You can now return binary values in BinHex format in addition to the default base64 encoded string values.
 
 * **FileUtils.GetPhsysicalPath()**  
 <small>westwind.utilties</small>
